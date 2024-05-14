@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import { Icon } from 'astro-icon/components';
+
+const kuizes = [
+	{
+		img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallup.net%2Fwp-content%2Fuploads%2F2019%2F09%2F682433-flower-flowerrs-nature-landscape.jpg&f=1&nofb=1&ipt=0b1fc45b34601565ee837030989a347591a3dd7f1f9cbfd05282fc469ba35845&ipo=images",
+		title: "Flowers",
+		description: "Test your floral knowledge in this quiz spanning species, symbolism, cultivation, and fascinating trivia about vibrant blooms worldwide."
+	},
+	{
+		title: "Flags",
+		description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam earum assumenda exercitationem illum officiis eos odit. Suscipit aperiam a ut?",
+		img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.cntraveler.com%2Fphotos%2F57237bd7c68c96fe3af96742%2Fmaster%2Fpass%2Finternational-flags-flagpoles-GettyImages-184601450.jpg&f=1&nofb=1&ipt=cbdd74ff7675b2ffe6fdaf4bfbd82a96ec9febae626173c5863bf9f6ce7f8e97&ipo=images"
+	}
+]
+---
+
+<Layout title="Browse quizes">
+	<section class="section">
+		<div class="container">
+			<div class="columns level is-flex is-justify-content-space-between">
+				<h1 class="column title">Browse Kuizes</h1>
+				<form class="control">
+					<input class="input" type="search" name="q" id="search" placeholder="e.g. flowers">
+					<button><Icon class:list={"search"} size="1.25rem" name="mdi:search" title="Search" /></button>
+				</form>
+			</div>
+			<hr class="has-background-primary"/>
+			<div class="fixed-grid has-3-cols">
+				<div class="grid is-gap-3">
+					{Object.keys(kuizes).map(k=>(
+						<a href="#" class="cell box is-flex is-flex-direction-column is-align-items-center is-gap-2">
+							<figure class="image skeleton-">
+								<picture class="is-unselectable">
+									<source srcset={kuizes[k].img || "https://placehold.co/640x360/EEE/31343C.webp"} type='image/webp'/>
+									<img src={kuizes[k].img || "https://placehold.co/640x360/EEE/31343C.png"} alt="Kuiz" />
+								</picture>
+							</figure>
+							<div class="content is-flex is-flex-direction-column">
+								<p class="title has-text-centered">{kuizes[k].title}</p>
+								<p>{kuizes[k].description}</p>
+							</div>
+						</a>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+<style>
+
+	/* Position the search icon */
+	.control {
+		height: fit-content;
+	}
+	.control button {
+		position: absolute;
+		top: 50%;
+		right: 1rem;
+		transform: translateY(-50%);
+		font-size: 0
+	}
+
+	figure {
+		width: 300px;
+		border-radius: 8px;
+		overflow: hidden;
+	}
+</style>

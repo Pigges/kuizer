@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Modal from '../components/Modal.astro';
+
+import config from '../config.js';
+---
+
+<Layout title="Welcome to Astro.">
+	<section class="hero is-medium">
+		<div class="hero-body has-text-centered">
+			<p class="title">A simple, yet elegant quiz platform!</p>
+			<p class="subtitle">Create and share your quizes with the world.<br/>Let's start {config.name}ing!</p>
+			<div class="block is-flex is-justify-content-center is-gap-3">
+				<a href="/auth" class="button is-primary">Join us</a>
+				<a href="/browse" class="button">Browse</a>
+			</div>
+		</div>
+	</section>
+	<Modal id='dialog' open='Open modal'>
+		<main slot='main'>
+			<p>Some extra content you would like here</p>
+		</main>
+	</Modal>
+</Layout>
+
+<style>
+	.title {
+		padding-bottom: 1rem;
+	}
+</style>

@@ -1,0 +1,27 @@
+---
+import config from '../config.js';
+---
+
+<header>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="/" class="navbar-item title"><strong>{config.name}</strong></a>
+        </div>
+        <a href="/browse" class="navbar-item">Browse</a>
+        <div class="navbar-end is-flex is-align-items-center">
+            <div class="navbar-item">
+              <div class="buttons">
+                <a href="/auth" class="button is-secondary">
+                  <strong>Sign In</strong>
+                </a>
+              </div>
+            </div>
+            <a class="navbar-burger" role="button" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+    </nav>
+</header>

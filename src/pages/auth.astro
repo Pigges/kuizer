@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import config from '../config.js';
+---
+
+<Layout title="Sign up">
+    <section class="section">
+        <div class="container">
+            
+        </div>
+    </section>
+    <section class="section">
+        <!-- <article class="notification is-success">
+            <button class="delete"></button>
+            A magic link has been sent to your email address.<br/>Use the link to login.
+        </article> -->
+        <p class="title has-text-centered">{config.name}</p>
+        <div class="container">
+            <div class="box">
+                <form id="auth" class="block">
+                    <div class="block">
+                        <p class="is-size-4"><strong>Sign in</strong></p>
+                        <p class="">
+                            Enter your email below to login to your <strong>{config.name}</strong> account.
+                        </p>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="email">Email</label>
+                        <div class="control">
+                        <input id="email" class="input" type="email" placeholder="e.g. doe@example.com" required />
+                        </div>
+                    </div>
+                    
+                    <button class="button is-primary">Sign in</button>
+                </form>
+                <script is:inline>
+                    const form = document.querySelector('#auth');
+                    form.addEventListener('submit', (e)=>{
+                        e.preventDefault();
+
+                        // Button react to press
+                        form.querySelector('button').classList.add('is-loading');
+                        form.querySelector('button').disabled = true;
+                        
+
+                        // Create notification message
+                        const message = document.createElement('article');
+                        const close = document.createElement('button');
+                        close.addEventListener('click', (e)=>{
+                            e.target.parentElement.remove();
+                        })
+                        close.classList.add('delete');
+                        message.classList.add("notification");
+                        message.classList.add("is-success");
+                        message.innerHTML = "A login link has been sent to your email address,<br/>use it to login.";
+                        message.appendChild(close);
+                        
+                        // Button react to complete
+                        document.body.appendChild(message);
+                        form.querySelector('button').classList.add('is-success');
+                        // form.querySelector('button').classList.add('is-disabled');
+                        form.querySelector('button').classList.remove('is-loading');
+                    });
+                </script>
+                <div class="block continue is-flex is-align-items-center is-gap-2">
+                    <div class="line has-background-primary"></div>
+                    <p class="is-size-7 is-uppercase is-unselectable">Or continue with</p>
+                    <div class="line has-background-primary"></div>
+                </div>
+                <div class="is-flex is-flex-direction-column block">
+                    <button class="button is-link" disabled>Coming soon</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+<style lang="scss">
+    .box {
+        width: fit-content;
+        margin: auto;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    /* Line surounding 'continue with' text */
+    .line {
+        display: inline-block;
+        flex-grow: 1;
+        min-width: 0;
+        height: 1px;
+    }
+    .continue p {
+        display: inline-block;
+    }
+</style>
+<style is:inline>
+    .notification {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        z-index: 30;
+        animation: slide 500ms ease-in-out ;
+    }
+
+    @-webkit-keyframes slide {
+        from { transform: translateX(150%); }
+    }
+
+    @keyframes slide {
+        from {  transform: translateX(150%); }
+    }
+</style>

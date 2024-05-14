@@ -1,0 +1,22 @@
+{
+  "name": "kuizer",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "dev:db": "docker-compose up dragonfly"
+  },
+  "dependencies": {
+    "@iconify-json/mdi": "^1.1.66",
+    "astro": "^4.7.0",
+    "astro-icon": "^1.1.0",
+    "astro-loading-indicator": "^0.4.0",
+    "astro-page-insight": "^0.6.3",
+    "bulma": "^1.0.0",
+    "sass": "^1.75.0"
+  }
+}

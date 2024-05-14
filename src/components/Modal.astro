@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const {id, title="Modal title", open} = Astro.props;
+---
+
+<button class="button" onclick={`window.${id}.showModal()`}>{open}</button>
+<dialog class="card" id={id}>
+    <header class="card-header">
+        <p class="card-header-title">{title}</p>
+        <form method="dialog">
+            <button class="card-header-icon" slot='close'>
+                <Icon size="1.25rem" name="mdi:close" title="Close" />
+            </button>
+        </form>
+    </header>
+    <div class="card-content">
+        <div class="content">
+            <slot name="main" />
+        </div>
+    </div>
+</dialog>
+
+<style>
+    dialog {
+        border: 1px solid var(--bulma-primary);
+    }
+
+    dialog::backdrop {
+        background-color: rgba(0, 0, 0, 1);
+        opacity: 0.5;
+    }
+
+    /* dialog header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    } */
+</style>

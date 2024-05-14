@@ -1,0 +1,37 @@
+@use 'bulma/sass' with (
+    $family-primary: 'Ubuntu',
+    $primary: #ac38da,
+);
+
+@import url(https://fonts.bunny.net/css?family=ubuntu:300,300i,400,400i,700,700i);
+
+@media (prefers-color-scheme: light) {
+    :root {
+      --dotted-color: #d0d0d0;
+    }
+}
+  
+@media (prefers-color-scheme: dark) {
+    :root {
+      --dotted-color: #2f2f2f;
+    }
+}
+
+.has-dotted-background {
+    background-color: var(--bulma-body-background-color);
+    background-image: radial-gradient(var(--dotted-color) 1px, var(--bulma-body-background-color) 1px);
+    background-size: 20px 20px;
+    animation: dotted 10s infinite linear;
+}
+
+@keyframes dotted {
+    100% {background-position: calc(var(--mouse-x) * 2) calc(var(--mouse-y) * 2);}
+  }
+
+// .unselectable {
+//     user-select: none;
+//     -moz-user-select: none;
+//     -khtml-user-select: none;
+//     -webkit-user-select: none;
+//     -o-user-select: none;
+// }
